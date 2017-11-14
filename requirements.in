@@ -1,0 +1,5 @@
+django==1.11.7
+social-auth-app-django==2.0.0
+
+# optional when using database engine postgres
+psycopg2==2.7.3.2

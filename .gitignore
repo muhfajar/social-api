@@ -157,3 +157,4 @@ venv.bak/
 
 /social_api/settings/private.py
 /db.sqlite3
+/requirements.txt

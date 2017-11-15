@@ -6,6 +6,6 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Send</button> <a href="{% url 'venue-delete' venue_id=id %}">Delete</a>
+        <button type="submit">Send</button> {% if not create %}<a href="{% url 'venue-delete' venue_id=id %}">Delete</a>{% endif %}
     </form>
 {% endblock %}

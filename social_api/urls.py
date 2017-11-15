@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import views as auth_views
 
-from modules.event.views import core, venue
+from modules.event.views import (
+    core, venue, event,
+    event_type)
 
 urlpatterns = [
     url(r'^$', core.home, name='home'),
@@ -27,6 +29,16 @@ urlpatterns = [
     url(r'^venue/(?P<venue_id>[0-9]+)/$', venue.venue_update, name='venue-update'),
     url(r'^venue/(?P<venue_id>[0-9]+)/delete/$', venue.venue_delete, name='venue-delete'),
     url(r'^venue/list/$', venue.venue_list, name='venue-list'),
+
+    url(r'^event-type/$', event_type.event_type, name='event-type'),
+    url(r'^event-type/(?P<event_type_id>[0-9]+)/$', event_type.event_type_update, name='event-type-update'),
+    url(r'^event-type/(?P<event_type_id>[0-9]+)/delete/$', event_type.event_type_delete, name='event-type-delete'),
+    url(r'^event-type/list/$', event_type.event_type_list, name='event-type-list'),
+
+    url(r'^event/$', event.event, name='event'),
+    url(r'^event/(?P<event_id>[0-9]+)/$', event.event_update, name='event-update'),
+    url(r'^event/(?P<event_id>[0-9]+)/delete/$', event.event_delete, name='event-delete'),
+    url(r'^event/list/$', event.event_list, name='event-list'),
 
     url(r'^category/(?P<event_type>\w+)/$', core.category, name='type'),
 

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if events %}
+        {{ event.name }}<br>{{ event.date }} | {{ event.venue }} | Open gate: {{ event.open_gate }}<br>Category: <a href="{% url 'type' event_type=event.type|lower %}">{{ event.type }}</a> // <a href="https://twitter.com/intent/tweet?text={{ event.name|urlencode }}">Tweet this</a></li>
+    {% else %}
+        <p>404</p>
+    {% endif %}
+{% endblock %}

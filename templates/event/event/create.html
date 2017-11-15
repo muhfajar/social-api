@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Event</h3>
+    <a href="{% url 'event-list' %}"><- Back</a>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button> {% if not create %}<a href="{% url 'event-delete' event_id=id %}">Delete</a>{% endif %}
+    </form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if events %}
+        <ul>
+            {% for event in events %}
+                <li><a href="{% url 'event-update' event_id=event.id %}">{{ event.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Create your first <a href="{% url 'event' %}">event</a>.</p>
+    {% endif %}
+{% endblock %}

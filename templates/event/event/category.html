@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>Event List under category: {{ category }}</p>
-    // <a href="{% url 'home' %}">all</a> //
+    <p><a href="{% url 'home' %}">All</a> // Event List under category: {{ category }}</p>
+
     <ul>
     {% for event in events %}
         <li>{{ event.name }}<br>{{ event.date }} | {{ event.venue }} | Open gate: {{ event.open_gate }}</li>

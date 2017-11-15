@@ -6,7 +6,7 @@
     {% if events %}
         <ul>
             {% for event in events %}
-                <li><a href="{% url 'event-update' event_id=event.id %}">{{ event.name }}</a><br>{{ event.date }} | {{ event.venue }} | Open gate: {{ event.open_gate }}<br>Category: <a href="{% url 'type' event_type=event.type|lower %}">{{ event.type }}</a> // <a href="{% url 'ticket-list' event_id=event.id %}">See available ticket</a> // <a href="https://twitter.com/intent/tweet?text=Please see my {{ event.name|urlencode }} here: {{ url }}{% url 'event-detail' event_id=event.id %}">Tweet this</a></li>
+                <li><a href="{% url 'event-update' event_id=event.id %}">{{ event.name }}</a><br>{{ event.date }} | {{ event.venue }} | Open gate: {{ event.open_gate }}<br>Category: <a href="{% url 'event-category' event_type=event.type|lower %}">{{ event.type }}</a> // <a href="{% url 'ticket-list' event_id=event.id %}">See available ticket</a> // <a href="https://twitter.com/intent/tweet?text=Please see my {{ event.name|urlencode }} here: {{ url }}{% url 'event-detail' event_id=event.id %}">Tweet this</a></li>
             {% endfor %}
         </ul>
     {% else %}

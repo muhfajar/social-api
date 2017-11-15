@@ -37,13 +37,6 @@ def home(request):
 
 
 @login_required
-def category(request, event_type):
-    owner = request.user
-    events = Event.objects.all().filter(type__name__contains=event_type).filter(owner_id__exact=owner.id)
-    return render(request, 'event/category.html', {'events': events, 'category': event_type})
-
-
-@login_required
 def settings(request):
     user = request.user
 

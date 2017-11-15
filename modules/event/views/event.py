@@ -52,3 +52,10 @@ def event_detail(request, event_id):
     event_data = Event.objects.get(id=event_id)
     return render(request, 'event/event/detail.html', {'event': event_data,
                                                        'url': request.build_absolute_uri("/").rstrip("/")})
+
+
+@login_required
+def category(request, event_type):
+    owner = request.user
+    events = Event.objects.all().filter(type__name__contains=event_type).filter(owner_id__exact=owner.id)
+    return render(request, 'event/event/category.html', {'events': events, 'category': event_type})

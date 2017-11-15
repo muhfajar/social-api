@@ -41,13 +41,12 @@ urlpatterns = [
     url(r'^event/(?P<event_id>[0-9]+)/$', event.event_update, name='event-update'),
     url(r'^event/(?P<event_id>[0-9]+)/delete/$', event.event_delete, name='event-delete'),
     url(r'^event/list/$', event.event_list, name='event-list'),
+    url(r'^event/category/(?P<event_type>\w+)/$', event.category, name='event-category'),
 
     url(r'^ticket/(?P<event_id>[0-9]+)/$', ticket.ticket, name='ticket'),
     url(r'^ticket/(?P<event_id>[0-9]+)/(?P<ticket_id>[0-9]+)/$', ticket.ticket_update, name='ticket-update'),
     url(r'^ticket/(?P<ticket_id>[0-9]+)/delete/$', ticket.ticket_delete, name='ticket-delete'),
     url(r'^ticket/(?P<event_id>[0-9]+)/list/$', ticket.ticket_list, name='ticket-list'),
-
-    url(r'^category/(?P<event_type>\w+)/$', core.category, name='type'),
 
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),

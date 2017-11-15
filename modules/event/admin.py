@@ -17,6 +17,11 @@ class VenueAdmin(admin.ModelAdmin):
     ordering = ('name', 'city')
     list_filter = ('city',)
 
+    def save_model(self, request, obj, form, change):
+        if getattr(obj, 'author', None) is None:
+            obj.author = request.user
+        obj.save()
+
 
 @admin.register(EventType)
 class EventTypeAdmin(admin.ModelAdmin):
@@ -26,6 +31,11 @@ class EventTypeAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
     ordering = ('name',)
+
+    def save_model(self, request, obj, form, change):
+        if getattr(obj, 'author', None) is None:
+            obj.author = request.user
+        obj.save()
 
 
 @admin.register(Event)
@@ -39,6 +49,11 @@ class EventAdmin(admin.ModelAdmin):
     ordering = ('name', 'type', 'venue', 'date', 'open_gate')
     list_filter = ('venue', 'type', 'date')
 
+    def save_model(self, request, obj, form, change):
+        if getattr(obj, 'author', None) is None:
+            obj.author = request.user
+        obj.save()
+
 
 @admin.register(Ticket)
 class EventTypeAdmin(admin.ModelAdmin):
@@ -48,3 +63,8 @@ class EventTypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'event', 'price')
     search_fields = ('name', 'event', 'price')
     ordering = ('name', 'event', 'price')
+
+    def save_model(self, request, obj, form, change):
+        if getattr(obj, 'author', None) is None:
+            obj.author = request.user
+        obj.save()

@@ -22,7 +22,14 @@ from modules.event import views as core_views
 
 urlpatterns = [
     url(r'^$', core_views.home, name='home'),
+
+    url(r'^venue/$', core_views.venue, name='venue'),
+    url(r'^venue/(?P<venue_id>[0-9]+)/$', core_views.venue_update, name='venue-update'),
+    url(r'^venue/(?P<venue_id>[0-9]+)/delete/$', core_views.venue_delete, name='venue-delete'),
+    url(r'^venue/list/$', core_views.venue_list, name='venue-list'),
+
     url(r'^category/(?P<event_type>\w+)/$', core_views.category, name='type'),
+
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^signup/$', core_views.signup, name='signup'),

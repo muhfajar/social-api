@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Venue</h3>
+    <a href="{% url 'venue-list' %}"><- Back</a>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button> <a href="{% url 'venue-delete' venue_id=id %}">Delete</a>
+    </form>
+{% endblock %}

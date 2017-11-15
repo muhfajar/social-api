@@ -26,7 +26,7 @@ class EventType(models.Model):
 
 class Event(models.Model):
     name = models.CharField(max_length=255)
-    type = models.OneToOneField(EventType)
+    type = models.ForeignKey(EventType)
     venue = models.OneToOneField(Venue)
     date = models.DateField()
     open_gate = models.TimeField()

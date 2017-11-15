@@ -16,7 +16,7 @@ def venue(request):
             return redirect('venue-list')
     else:
         form = VenueForm()
-    return render(request, 'event/venue/create.html', {'form': form})
+    return render(request, 'event/venue/create.html', {'form': form, 'create': True})
 
 
 @login_required

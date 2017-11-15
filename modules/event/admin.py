@@ -15,11 +15,11 @@ class VenueAdmin(admin.ModelAdmin):
     list_display = ('name', 'capacity', 'city', 'owner')
     search_fields = ('name', 'city')
     ordering = ('name', 'city')
-    list_filter = ('city',)
+    list_filter = ('city', 'owner')
 
     def get_queryset(self, request):
         qs = super(VenueAdmin, self).get_queryset(request)
-        if request.user.is_superuser:
+        if request.user.is_staff:
             return qs
         return qs.filter(owner=request.user)
 
@@ -36,10 +36,11 @@ class EventTypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'owner')
     search_fields = ('name',)
     ordering = ('name',)
+    list_filter = ('owner',)
 
     def get_queryset(self, request):
         qs = super(EventTypeAdmin, self).get_queryset(request)
-        if request.user.is_superuser:
+        if request.user.is_staff:
             return qs
         return qs.filter(owner=request.user)
 
@@ -57,11 +58,11 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'venue', 'date', 'open_gate', 'owner')
     search_fields = ('name', 'type', 'venue', 'date', 'open_gate')
     ordering = ('name', 'type', 'venue', 'date', 'open_gate')
-    list_filter = ('venue', 'type', 'date')
+    list_filter = ('venue', 'type', 'date', 'owner')
 
     def get_queryset(self, request):
         qs = super(EventAdmin, self).get_queryset(request)
-        if request.user.is_superuser:
+        if request.user.is_staff:
             return qs
         return qs.filter(owner=request.user)
 
@@ -78,10 +79,11 @@ class TicketAdmin(admin.ModelAdmin):
     list_display = ('name', 'event', 'price', 'owner')
     search_fields = ('name', 'event', 'price')
     ordering = ('name', 'event', 'price')
+    list_filter = ('owner',)
 
     def get_queryset(self, request):
         qs = super(TicketAdmin, self).get_queryset(request)
-        if request.user.is_superuser:
+        if request.user.is_staff:
             return qs
         return qs.filter(owner=request.user)
 

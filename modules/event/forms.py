@@ -1,9 +1,10 @@
-from django.forms import ModelForm, HiddenInput
+from django.forms import ModelForm
 
 from modules.event.models import (
     Venue,
     EventType,
-    Event
+    Event,
+    Ticket,
 )
 
 
@@ -26,3 +27,10 @@ class EventForm(ModelForm):
         model = Event
         fields = '__all__'
         exclude = ['owner']
+
+
+class TicketForm(ModelForm):
+    class Meta:
+        model = Ticket
+        fields = '__all__'
+        exclude = ['owner', 'event']

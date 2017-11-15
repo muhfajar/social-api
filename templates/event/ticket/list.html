@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p><a href="{% url 'ticket' event_id=event.id %}">Add ticket to event {{ event.name }}</a></p>
+
+    {% if tickets %}
+        <ul>
+            {% for ticket in tickets %}
+                <li><a href="{% url 'ticket-update' ticket_id=ticket.id event_id=event.id %}">{{ ticket.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Create your first <a href="{% url 'ticket' %}">ticket</a>.</p>
+    {% endif %}
+{% endblock %}

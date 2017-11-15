@@ -20,7 +20,8 @@ from django.contrib.auth import views as auth_views
 
 from modules.event.views import (
     core, venue, event,
-    event_type)
+    event_type, ticket,
+)
 
 urlpatterns = [
     url(r'^$', core.home, name='home'),
@@ -40,6 +41,11 @@ urlpatterns = [
     url(r'^event/(?P<event_id>[0-9]+)/$', event.event_update, name='event-update'),
     url(r'^event/(?P<event_id>[0-9]+)/delete/$', event.event_delete, name='event-delete'),
     url(r'^event/list/$', event.event_list, name='event-list'),
+
+    url(r'^ticket/(?P<event_id>[0-9]+)/$', ticket.ticket, name='ticket'),
+    url(r'^ticket/(?P<event_id>[0-9]+)/(?P<ticket_id>[0-9]+)/$', ticket.ticket_update, name='ticket-update'),
+    url(r'^ticket/(?P<ticket_id>[0-9]+)/delete/$', ticket.ticket_delete, name='ticket-delete'),
+    url(r'^ticket/(?P<event_id>[0-9]+)/list/$', ticket.ticket_list, name='ticket-list'),
 
     url(r'^category/(?P<event_type>\w+)/$', core.category, name='type'),
 

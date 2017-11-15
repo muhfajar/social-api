@@ -44,7 +44,8 @@ def event_delete(event_id):
 def event_list(request):
     owner = request.user
     events = Event.objects.all().filter(owner_id__exact=owner.id)
-    return render(request, 'event/event/list.html', {'events': events})
+    return render(request, 'event/event/list.html', {'events': events,
+                                                     'url': request.build_absolute_uri("/").rstrip("/")})
 
 
 def event_detail(request, event_id):

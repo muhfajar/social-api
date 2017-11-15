@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Ticket for {{ event.name }}</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button> {% if not create %}<a href="{% url 'ticket-delete' ticket_id=id %}">Delete</a>{% endif %}
+    </form>
+{% endblock %}

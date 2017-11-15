@@ -2,7 +2,7 @@
 
 {% block content %}
     {% if event %}
-        {{ event.name }}<br>{{ event.date }} | {{ event.venue }} | Open gate: {{ event.open_gate }}<br>Category: <a href="{% url 'type' event_type=event.type|lower %}">{{ event.type }}</a> // <a href="https://twitter.com/intent/tweet?text=Please see my {{ event.name|urlencode }} here: {{ request.build_absolute_uri|urlencode }}">Tweet this</a>
+        {{ event.name }}<br>{{ event.date }} | {{ event.venue }} | Open gate: {{ event.open_gate }}<br>Category: <a href="{% url 'event-category' event_type=event.type|lower %}">{{ event.type }}</a> // <a href="https://twitter.com/intent/tweet?text=Please see my {{ event.name|urlencode }} here: {{ request.build_absolute_uri|urlencode }}">Tweet this</a>
     {% else %}
         <p>404</p>
     {% endif %}

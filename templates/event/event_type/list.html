@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <p><a href="{% url 'event-type' %}">Add event type</a></p>
     {% if event_types %}
         <ul>
             {% for event_type in event_types %}

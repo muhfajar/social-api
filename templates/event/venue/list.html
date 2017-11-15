@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <p><a href="{% url 'venue' %}">Add venue</a></p>
+
     {% if venues %}
         <ul>
             {% for venue in venues %}

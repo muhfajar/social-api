@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'^event-type/list/$', event_type.event_type_list, name='event-type-list'),
 
     url(r'^event/$', event.event, name='event'),
+    url(r'^event/get/(?P<event_id>[0-9]+)/$', event.event_detail, name='event-detail'),
     url(r'^event/(?P<event_id>[0-9]+)/$', event.event_update, name='event-update'),
     url(r'^event/(?P<event_id>[0-9]+)/delete/$', event.event_delete, name='event-delete'),
     url(r'^event/list/$', event.event_list, name='event-list'),

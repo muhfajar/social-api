@@ -22,9 +22,9 @@
             <a href="{% url 'password' %}">change password</a> /
             <a href="{% url 'logout' %}">logout</a>
             <br>
-            <a href="{% url 'event' %}">event</a> //
-            <a href="{% url 'event-type' %}">event type</a> //
-            <a href="{% url 'venue' %}">venue</a>
+            <a href="{% url 'event-list' %}">event</a> //
+            <a href="{% url 'event-type-list' %}">event type</a> //
+            <a href="{% url 'venue-list' %}">venue</a>
         {% else %}
             <a href="{% url 'login' %}">login</a> /
             <a href="{% url 'signup' %}">signup</a>

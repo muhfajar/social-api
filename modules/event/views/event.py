@@ -45,3 +45,9 @@ def event_list(request):
     owner = request.user
     events = Event.objects.all().filter(owner_id__exact=owner.id)
     return render(request, 'event/event/list.html', {'events': events})
+
+
+def event_detail(request, event_id):
+    event_data = Event.objects.get(id=event_id)
+    return render(request, 'event/event/detail.html', {'event': event_data,
+                                                       'url': request.build_absolute_uri("/").rstrip("/")})

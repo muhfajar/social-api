@@ -3,3 +3,6 @@ social-auth-app-django==2.0.0
 
 # optional when using database engine postgres
 psycopg2==2.7.3.2
+
+# map dependencies
+django-location-field==2.0.3

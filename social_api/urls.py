@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
+
+# Change admin site title
+admin.site.site_header = _("Event Management")
+admin.site.site_title = _("Admin Panel")

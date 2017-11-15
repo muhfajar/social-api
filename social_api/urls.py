@@ -18,23 +18,23 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import views as auth_views
 
-from modules.event import views as core_views
+from modules.event.views import core, venue
 
 urlpatterns = [
-    url(r'^$', core_views.home, name='home'),
+    url(r'^$', core.home, name='home'),
 
-    url(r'^venue/$', core_views.venue, name='venue'),
-    url(r'^venue/(?P<venue_id>[0-9]+)/$', core_views.venue_update, name='venue-update'),
-    url(r'^venue/(?P<venue_id>[0-9]+)/delete/$', core_views.venue_delete, name='venue-delete'),
-    url(r'^venue/list/$', core_views.venue_list, name='venue-list'),
+    url(r'^venue/$', venue.venue, name='venue'),
+    url(r'^venue/(?P<venue_id>[0-9]+)/$', venue.venue_update, name='venue-update'),
+    url(r'^venue/(?P<venue_id>[0-9]+)/delete/$', venue.venue_delete, name='venue-delete'),
+    url(r'^venue/list/$', venue.venue_list, name='venue-list'),
 
-    url(r'^category/(?P<event_type>\w+)/$', core_views.category, name='type'),
+    url(r'^category/(?P<event_type>\w+)/$', core.category, name='type'),
 
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
-    url(r'^signup/$', core_views.signup, name='signup'),
-    url(r'^settings/$', core_views.settings, name='settings'),
-    url(r'^settings/password/$', core_views.password, name='password'),
+    url(r'^signup/$', core.signup, name='signup'),
+    url(r'^settings/$', core.settings, name='settings'),
+    url(r'^settings/password/$', core.password, name='password'),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^admin/', admin.site.urls),
 ]

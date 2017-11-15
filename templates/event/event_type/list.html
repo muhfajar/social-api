@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if event_types %}
+        <ul>
+            {% for event_type in event_types %}
+                <li><a href="{% url 'event-type-update' event_type_id=event_type.id %}">{{ event_type.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Create your first <a href="{% url 'event-type' %}">event_type</a>.</p>
+    {% endif %}
+{% endblock %}

@@ -42,6 +42,7 @@ urlpatterns = [
     url(r'^event/(?P<event_id>[0-9]+)/delete/$', event.event_delete, name='event-delete'),
     url(r'^event/list/$', event.event_list, name='event-list'),
     url(r'^event/category/(?P<event_type>\w+)/$', event.category, name='event-category'),
+    url(r'^event/tweet/(?P<event_id>\w+)/$', event.tweet, name='event-tweet'),
 
     url(r'^ticket/(?P<event_id>[0-9]+)/$', ticket.ticket, name='ticket'),
     url(r'^ticket/(?P<event_id>[0-9]+)/(?P<ticket_id>[0-9]+)/$', ticket.ticket_update, name='ticket-update'),
